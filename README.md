@@ -1,8 +1,11 @@
+# Summary
+
+本repo提供一个可以在windows下一键启动的executable以及前端
+
+
 # PaintBoardServer
 
 绘板服务端
-
-[Have a try](http://106.15.202.51:8080/paintBoard)
 
 ## APIs
 
