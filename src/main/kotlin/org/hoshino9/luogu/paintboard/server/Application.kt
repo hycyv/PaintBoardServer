@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import redis.clients.jedis.Jedis
 import java.io.File
 import java.util.*
+import io.ktor.features.*
 
 data class PaintRequest(val x: Int, val y: Int, val color: String)
 class RequestException(errorMessage: String) : Exception(errorMessage)
@@ -75,7 +76,18 @@ fun main() {
         }
 
         install(WebSockets)
-
+        install(CORS) {
+            method(HttpMethod.Options)
+            method(HttpMethod.Get)
+            method(HttpMethod.Post)
+            method(HttpMethod.Put)
+            method(HttpMethod.Delete)
+            method(HttpMethod.Patch)
+            header(HttpHeaders.Authorization)
+            allowCredentials = true
+            anyHost()
+        }
+        
         routing {
             managePage()
             board()
